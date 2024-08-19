@@ -3,12 +3,19 @@ import 'package:project_2/components/button_component.dart';
 import 'package:project_2/components/text_field_component.dart';
 
 class LoginPage extends StatelessWidget{
-  LoginPage({super.key});
+  
 
   //username and password text controllers
   final TextEditingController userNameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
+  //tap to go to the register page
+  final void Function()? onTap;
+
+  LoginPage({
+    super.key,
+    required this.onTap
+  });
   //login method
   void login(){
 
@@ -68,11 +75,14 @@ class LoginPage extends StatelessWidget{
                   ),
                 ),
                 
-                Text(
-                  "Click here", 
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Theme.of(context).colorScheme.primary
+                GestureDetector(
+                  onTap: onTap,
+                  child: Text(
+                    "Click here", 
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).colorScheme.primary
+                    ),
                   ),
                 ),
               ],
