@@ -85,4 +85,30 @@ class ApiClient{
     }
   }
 
+  Future<List<String>> getCategoryNames() async {
+    final url = Uri.parse('$baseUrl/Category/categoryNames');
+    final response = await http.get(
+      url,
+      headers: {
+        'Authorization': 'Bearer $bearerToken',
+        'Content-type': 'application/json',
+      },
+    );
+
+    if(response.statusCode == 200)
+    {
+      var result = json.decode(response.body); 
+      List<String> catNames = [];
+      for(var name in result){
+        catNames.add(name);
+      }
+
+      return catNames;
+    }
+    else
+    {
+      throw Exception();
+    }
+  }
+
 }
