@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:project_2/api/api_client.dart';
 import 'package:project_2/components/button_component.dart';
 import 'package:project_2/components/text_field_component.dart';
+
+import 'home_page.dart';
 
 class LoginPage extends StatelessWidget{
   
@@ -16,9 +19,23 @@ class LoginPage extends StatelessWidget{
     super.key,
     required this.onTap
   });
-  //login method
-  void login(){
 
+  //login method
+  void login(BuildContext context) async {
+    final apiClient = ApiClient();
+
+    var status = await apiClient.authenticate(userNameController.text, passwordController.text);
+
+    if(status == true) {
+      debugPrint('login success');
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => HomePage()),
+      );
+    }
+    else {
+      debugPrint('login failed');
+    }
   }
   
 
@@ -59,7 +76,7 @@ class LoginPage extends StatelessWidget{
 
             ButtonComponent(
               buttonText: "Login",
-              onTap: login,
+              onTap: () => login(context),
             ),
 
             //register
