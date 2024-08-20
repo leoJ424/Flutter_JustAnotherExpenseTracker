@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:project_2/api/api_client.dart';
 import 'package:project_2/components/button_component.dart';
 import 'package:project_2/components/text_field_component.dart';
-
-import 'home_page.dart';
+import 'package:project_2/pages/add_transaction_page.dart';
 
 class LoginPage extends StatelessWidget{
   
@@ -30,7 +29,7 @@ class LoginPage extends StatelessWidget{
       debugPrint('login success');
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => HomePage()),
+        MaterialPageRoute(builder: (context) => AddTransaction()),
       );
     }
     else {
