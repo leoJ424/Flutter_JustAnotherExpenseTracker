@@ -24,34 +24,50 @@ class _AddTransactionState extends State<AddTransaction> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            FutureBuilder<List<String>> (
-              future: apiClient.getCardIds(),
-              builder: (context, snapshot){
-                if(snapshot.hasData){
-                  return DropdownButton(
-                    hint: Text('Select Cards'),
-                    value: selectedCardName,
-
-                    items: snapshot.data!.map( (e){
-                      return DropdownMenuItem(
-                        value: e,
-                        child: Text(e),
-                      );
-                    }).toList(),
-
-                    onChanged: (value){
-                      selectedCardName = value;
-                      setState(() {
-                        
-                      });
-                    }
-                  );
-                }
-                else{
-                  return CircularProgressIndicator();
-                }
-              },
-            )
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Expanded(
+                    child: Text("Select the card"),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Expanded(
+                    child: FutureBuilder<List<String>> (
+                      future: apiClient.getCardIds(),
+                      builder: (context, snapshot){
+                        if(snapshot.hasData){
+                          return DropdownButton(
+                            hint: Text('Select Cards'),
+                            value: selectedCardName,
+                  
+                            items: snapshot.data!.map( (e){
+                              return DropdownMenuItem(
+                                value: e,
+                                child: Text(e),
+                              );
+                            }).toList(),
+                  
+                            onChanged: (value){
+                              selectedCardName = value;
+                              setState(() {
+                                
+                              });
+                            }
+                          );
+                        }
+                        else{
+                          return CircularProgressIndicator();
+                        }
+                      },
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       ),
