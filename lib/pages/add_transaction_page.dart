@@ -14,6 +14,7 @@ class _AddTransactionState extends State<AddTransaction> {
 
   var selectedCardName;
   var selectedCategoryName;
+  var selectedRecipientName;
 
   @override
   Widget build(BuildContext context) {
@@ -101,6 +102,52 @@ class _AddTransactionState extends State<AddTransaction> {
                   
                             onChanged: (value){
                               selectedCategoryName = value;
+                              setState(() {
+                                
+                              });
+                            }
+                          );
+                        }
+                        else{
+                          return CircularProgressIndicator();
+                        }
+                      },
+                    ),
+                  ),
+                ),           
+              ],
+            ),
+            SizedBox(height: 25),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Expanded(
+                    child: Text('Select Recipient')
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Expanded(
+                    child: FutureBuilder<List<String>> (
+                      future: apiClient.getRecipientNames(),
+                      builder: (context, snapshot){
+                        if(snapshot.hasData){
+                          return DropdownButton(
+                            hint: Text('Select Recipient'),
+                            value: selectedRecipientName,
+                  
+                            items: snapshot.data!.map( (e){
+                              return DropdownMenuItem(
+                                value: e,
+                                child: Text(e),
+                              );
+                            }).toList(),
+                  
+                            onChanged: (value){
+                              selectedRecipientName = value;
                               setState(() {
                                 
                               });

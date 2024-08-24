@@ -111,4 +111,31 @@ class ApiClient{
     }
   }
 
+  Future<List<String>> getRecipientNames() async {
+    final url = Uri.parse('$baseUrl/Recipient/recipientNames');
+
+    final response = await http.get(
+      url,
+      headers: {
+        'Authorization': 'Bearer $bearerToken',
+        'Content-type':'application/json',
+      }
+    );
+
+    if(response.statusCode == 200)
+    {
+      var result = json.decode(response.body);
+      List<String> recipientNames = [];
+      for(var name in result){
+        recipientNames.add(name);
+      }
+
+      return recipientNames;
+    }
+    else
+    {
+      throw Exception();
+    }
+  }
+
 }
