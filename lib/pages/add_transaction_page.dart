@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:project_2/components/dropdown_field_component.dart';
+import 'package:project_2/components/text_field_component.dart';
 
 import '../api/api_client.dart';
 
@@ -12,9 +14,13 @@ class AddTransaction extends StatefulWidget {
 class _AddTransactionState extends State<AddTransaction> {
   final apiClient = ApiClient();
 
-  var selectedCardName;
-  var selectedCategoryName;
-  var selectedRecipientName;
+  //var selectedCardName;
+  //var selectedCategoryName;
+  //var selectedRecipientName;
+  final TextEditingController amountController = TextEditingController();
+  String? selectedCardName;
+  String? selectedCategoryName;
+  String? selectedRecipientName;
 
   @override
   Widget build(BuildContext context) {
@@ -26,143 +32,59 @@ class _AddTransactionState extends State<AddTransaction> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Expanded(
-                    child: Text("Select the card"),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Expanded(
-                    child: FutureBuilder<List<String>> (
-                      future: apiClient.getCardIds(),
-                      builder: (context, snapshot){
-                        if(snapshot.hasData){
-                          return DropdownButton(
-                            hint: Text('Select Cards'),
-                            value: selectedCardName,
-                  
-                            items: snapshot.data!.map( (e){
-                              return DropdownMenuItem(
-                                value: e,
-                                child: Text(e),
-                              );
-                            }).toList(),
-                  
-                            onChanged: (value){
-                              selectedCardName = value;
-                              setState(() {
-                                
-                              });
-                            }
-                          );
-                        }
-                        else{
-                          return CircularProgressIndicator();
-                        }
-                      },
-                    ),
-                  ),
-                ),
-              ],
+            DropDownComponent(
+              mainText: "Select the Card", 
+              hintText: "Select Cards", 
+              selectedValue: selectedCardName, 
+              getData: apiClient.getCardIds, 
+              onChanged: (value) {
+                setState(() {
+                  selectedCardName = value;
+                });
+              }
             ),
 
-            SizedBox(height: 25),
-
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Expanded(
-                    child: Text('Select Category')
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Expanded(
-                    child: FutureBuilder<List<String>> (
-                      future: apiClient.getCategoryNames(),
-                      builder: (context, snapshot){
-                        if(snapshot.hasData){
-                          return DropdownButton(
-                            hint: Text('Select Category'),
-                            value: selectedCategoryName,
-                  
-                            items: snapshot.data!.map( (e){
-                              return DropdownMenuItem(
-                                value: e,
-                                child: Text(e),
-                              );
-                            }).toList(),
-                  
-                            onChanged: (value){
-                              selectedCategoryName = value;
-                              setState(() {
-                                
-                              });
-                            }
-                          );
-                        }
-                        else{
-                          return CircularProgressIndicator();
-                        }
-                      },
-                    ),
-                  ),
-                ),           
-              ],
+            DropDownComponent(
+              mainText: "Select the Category", 
+              hintText: "Select Catogory", 
+              selectedValue: selectedCategoryName, 
+              getData: apiClient.getCategoryNames, 
+              onChanged: (value) {
+                setState(() {
+                  selectedCategoryName = value;
+                });
+              }
             ),
-            SizedBox(height: 25),
 
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Expanded(
-                    child: Text('Select Recipient')
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Expanded(
-                    child: FutureBuilder<List<String>> (
-                      future: apiClient.getRecipientNames(),
-                      builder: (context, snapshot){
-                        if(snapshot.hasData){
-                          return DropdownButton(
-                            hint: Text('Select Recipient'),
-                            value: selectedRecipientName,
-                  
-                            items: snapshot.data!.map( (e){
-                              return DropdownMenuItem(
-                                value: e,
-                                child: Text(e),
-                              );
-                            }).toList(),
-                  
-                            onChanged: (value){
-                              selectedRecipientName = value;
-                              setState(() {
-                                
-                              });
-                            }
-                          );
-                        }
-                        else{
-                          return CircularProgressIndicator();
-                        }
-                      },
-                    ),
-                  ),
-                ),           
-              ],
+            DropDownComponent(
+              mainText: "Select the Recipient", 
+              hintText: "Select Recipient", 
+              selectedValue: selectedRecipientName, 
+              getData: apiClient.getRecipientNames, 
+              onChanged: (value) {
+                setState(() {
+                  selectedRecipientName = value;
+                });
+              }
             ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(250, 0, 250, 0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Text('Enter Transaction Amount')
+                  ),
+
+                  Expanded(
+                    child: TextFieldComponent(
+                      hintText: 'Amount',
+                      controller: amountController,
+                    ),
+                  )
+                ],
+              ),
+            )
           ],
         ),
       ),
