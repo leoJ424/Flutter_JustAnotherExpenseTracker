@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:project_2/components/button_component.dart';
 import 'package:project_2/components/datepicker_component.dart';
 import 'package:project_2/components/dropdown_field_component.dart';
 import 'package:project_2/components/dropdown_field_map_string_int_component.dart';
 import 'package:project_2/components/text_field_component.dart';
+import 'package:project_2/pages/add_credit_card_page.dart';
 
 import '../api/api_client.dart';
 
@@ -29,8 +31,7 @@ class _AddTransactionState extends State<AddTransaction> {
   final TextEditingController rewardPointsController = TextEditingController();
   final TextEditingController datePickerController = TextEditingController();
   final TextEditingController generalCommentsController = TextEditingController();
-
-
+  
   void addTransaction(BuildContext context) async {
     final apiClient = ApiClient();
     if(selectedCardName != null && selectedCategoryName != null && selectedRecipientName != null && selectedTransactionMode != null)
@@ -67,7 +68,7 @@ class _AddTransactionState extends State<AddTransaction> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Create a transaction"),
+        title: Text("Create a card transaction"),
       ),
       body: Center(
         child: Column(
@@ -215,7 +216,7 @@ class _AddTransactionState extends State<AddTransaction> {
               ],
             ),
 
-            
+
           ],
         ),
       ),
