@@ -59,45 +59,5 @@ class _DropDownComponentState extends State<DropDownComponent> {
         ],
       ),
     );
-    // return Row(
-    //   mainAxisAlignment: MainAxisAlignment.center,
-    //   children: [
-    //     Padding(
-    //       padding: const EdgeInsets.all(8.0),
-    //       child: Expanded(
-    //         child: Text(widget.mainText),
-    //       ),
-    //     ),
-    //     Padding(
-    //       padding: const EdgeInsets.all(8),
-    //       child: Expanded(
-    //         child: FutureBuilder<List<String>> (
-    //           future: widget.getData(),
-    //           builder: (context, snapshot){
-    //             if(snapshot.hasData){
-    //               return DropdownButton(
-    //                 hint: Text(widget.hintText),
-    //                 value: widget.selectedValue,
-
-    //                 items: snapshot.data!.map((e){
-    //                   return DropdownMenuItem(
-    //                     value: e, 
-    //                     child: Text(e),
-    //                   );
-    //                 }).toList(),
-
-    //                 onChanged: widget.onChanged,
-    //               );
-    //             }
-    //             else{
-    //               return CircularProgressIndicator();
-    //             }
-    //           },
-    //         ),
-    //       ),
-    //     )
-
-    //   ],
-    // );
   }
 }

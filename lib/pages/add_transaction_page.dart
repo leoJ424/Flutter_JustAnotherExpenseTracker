@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:project_2/components/button_component.dart';
 import 'package:project_2/components/datepicker_component.dart';
 import 'package:project_2/components/dropdown_field_component.dart';
 import 'package:project_2/components/dropdown_field_map_string_int_component.dart';
 import 'package:project_2/components/text_field_component.dart';
-import 'package:project_2/pages/add_credit_card_page.dart';
 
 import '../api/api_client.dart';
 
@@ -18,10 +16,6 @@ class AddTransaction extends StatefulWidget {
 
 class _AddTransactionState extends State<AddTransaction> {
   final apiClient = ApiClient();
-
-  //var selectedCardName;
-  //var selectedCategoryName;
-  //var selectedRecipientName;
   
   String? selectedCardName;
   String? selectedCategoryName;
