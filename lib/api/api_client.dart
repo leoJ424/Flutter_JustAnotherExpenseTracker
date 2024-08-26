@@ -138,4 +138,33 @@ class ApiClient{
     }
   }
 
+  Future<bool> addNewCardTransaction(String cardName, String categoryName, String recipientName, double amount, int paymentMode, int transactionMode, double rewardPoints, String transactionDate, String generalComments) async {
+    final url = Uri.parse('$baseUrl/Transaction?cardName=$cardName');
+    final response = await http.post(
+      url,
+      headers: {
+        'Authorization': 'Bearer $bearerToken',
+        'Content-type': 'application/json',
+      },
+      body: jsonEncode({
+        'categoryName' : categoryName,
+        'recipientName' : recipientName,
+        'amount' : amount,
+        'paymentMode' : paymentMode,
+        'transactionMode' : transactionMode,
+        'rewardPoints' : rewardPoints,
+        'date' : transactionDate,
+        'generalComments' : generalComments
+      })
+    );
+
+    if(response.statusCode == 200){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+  
+
 }
