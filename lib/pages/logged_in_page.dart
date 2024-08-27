@@ -21,25 +21,32 @@ class _LoggedInState extends State<LoggedIn> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: pages[selectedIndex],
-      bottomNavigationBar: GNav(
-        gap: 10,
-        tabBackgroundColor: Colors.grey.shade200,
-        onTabChange: (index) {
-          setState(() {
-            selectedIndex = index;
-          });
-        },
-        tabs: [
-          GButton(
-            icon: Icons.auto_graph,
-            text: 'Add Card Transaction',
-          ),
-
-          GButton(
-            icon: Icons.credit_card,
-            text: 'Add Credit Card',
-          ),
-        ],
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 15,
+          vertical: 20
+        ),
+        child: GNav(
+          gap: 10,
+          tabBackgroundColor: Colors.grey.shade200,
+          padding: EdgeInsets.all(15),
+          onTabChange: (index) {
+            setState(() {
+              selectedIndex = index;
+            });
+          },
+          tabs: [
+            GButton(
+              icon: Icons.auto_graph,
+              text: 'Add Card Transaction',
+            ),
+      
+            GButton(
+              icon: Icons.credit_card,
+              text: 'Add Credit Card',
+            ),
+          ],
+        ),
       ),
     );
   }

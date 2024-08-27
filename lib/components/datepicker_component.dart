@@ -12,12 +12,11 @@ class DatePickerComponent extends StatefulWidget {
 }
 
 class _DatePickerComponentState extends State<DatePickerComponent> {
-  //TextEditingController dateController = TextEditingController();
   
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.fromLTRB(35,0,35,0),
+      padding: EdgeInsets.symmetric(horizontal : 35),
       child: TextField(
         controller: widget.dateController,
         decoration: InputDecoration(

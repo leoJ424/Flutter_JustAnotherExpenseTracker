@@ -24,7 +24,7 @@ class _DropDownComponent_MapStringIntState extends State<DropDownComponent_MapSt
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(250, 0, 250, 0),
+      padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

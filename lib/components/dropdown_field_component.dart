@@ -23,41 +23,38 @@ class DropDownComponent extends StatefulWidget {
 class _DropDownComponentState extends State<DropDownComponent> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(250, 0, 250, 0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Expanded(
-            child: Text(widget.mainText),
-          ),
-          Expanded(
-            child: FutureBuilder<List<String>> (
-              future: widget.getData(),
-              builder: (context, snapshot){
-                if(snapshot.hasData){
-                  return DropdownButton(
-                    hint: Text(widget.hintText),
-                    value: widget.selectedValue,
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Expanded(
+          child: Text(widget.mainText),
+        ),
+        Expanded(
+          child: FutureBuilder<List<String>> (
+            future: widget.getData(),
+            builder: (context, snapshot){
+              if(snapshot.hasData){
+                return DropdownButton(
+                  hint: Text(widget.hintText),
+                  value: widget.selectedValue,
 
-                    items: snapshot.data!.map((e){
-                      return DropdownMenuItem(
-                        value: e, 
-                        child: Text(e),
-                      );
-                    }).toList(),
+                  items: snapshot.data!.map((e){
+                    return DropdownMenuItem(
+                      value: e, 
+                      child: Text(e),
+                    );
+                  }).toList(),
 
-                    onChanged: widget.onChanged,
-                  );
-                }
-                else{
-                  return CircularProgressIndicator();
-                }
-              },
-            ),
+                  onChanged: widget.onChanged,
+                );
+              }
+              else{
+                return CircularProgressIndicator();
+              }
+            },
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

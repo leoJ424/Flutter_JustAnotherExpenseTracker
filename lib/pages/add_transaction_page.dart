@@ -65,9 +65,9 @@ class _AddTransactionState extends State<AddTransaction> {
       appBar: AppBar(
         title: Text("Create a card transaction"),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 25),
+        child: ListView(
           children: [
             DropDownComponent(
               mainText: "Select the Card", 
@@ -120,7 +120,7 @@ class _AddTransactionState extends State<AddTransaction> {
 
             //Transaction Amount
             Padding(
-              padding: EdgeInsets.fromLTRB(250, 0, 250, 0),
+              padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -140,7 +140,7 @@ class _AddTransactionState extends State<AddTransaction> {
 
             //Transaction date picker
             Padding(
-              padding: EdgeInsets.fromLTRB(250, 0, 250, 0),
+              padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -158,7 +158,7 @@ class _AddTransactionState extends State<AddTransaction> {
             
             //Reward Points
             Padding(
-              padding: EdgeInsets.fromLTRB(250, 0, 250, 0),
+              padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -178,7 +178,7 @@ class _AddTransactionState extends State<AddTransaction> {
 
             //General Comments
             Padding(
-              padding: EdgeInsets.fromLTRB(250, 0, 250, 0),
+              padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

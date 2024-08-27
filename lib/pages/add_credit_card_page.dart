@@ -126,9 +126,23 @@ class _AddCreditCardState extends State<AddCreditCard> {
               ],
             ),
 
-            SizedBox(height: 10),
+            //Network
+            SizedBox(height: 20,),
+
+            DropDownComponent_MapStringInt(
+              mainText: "Select Network", 
+              hintText: "Card Network", 
+              selectedValue: selectedNetwork, 
+              getData: mapNetworks, 
+              onChanged: (value) {
+                setState(() {
+                  selectedNetwork = value;
+                });
+              }
+            ),
 
             //Card name
+            SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -153,22 +167,7 @@ class _AddCreditCardState extends State<AddCreditCard> {
               ],
             ),
 
-            //Network
-            SizedBox(height: 20,),
-            DropDownComponent_MapStringInt(
-              mainText: "Select Network", 
-              hintText: "Card Network", 
-              selectedValue: selectedNetwork, 
-              getData: mapNetworks, 
-              onChanged: (value) {
-                setState(() {
-                  selectedNetwork = value;
-                });
-              }
-            ),
-
             //Bank Name
-
             SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -184,7 +183,7 @@ class _AddCreditCardState extends State<AddCreditCard> {
             //Exp Date
             SizedBox(height: 10),
             Padding(
-              padding: EdgeInsets.fromLTRB(250, 0, 250, 0),
+              padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -200,6 +199,20 @@ class _AddCreditCardState extends State<AddCreditCard> {
               ),
             ),
 
+            //Credit Limit
+
+            SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Expanded(child: Text('Enter Credit Limit')),
+                Expanded(
+                  child: TextFieldComponent(
+                    hintText: 'Credit Limit',
+                    controller: creditCardLimitController,))
+              ],
+            ),
+
             //CVC
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -213,20 +226,6 @@ class _AddCreditCardState extends State<AddCreditCard> {
                   ],
                   maxLength: 3,
                 ))
-              ],
-            ),
-
-            //Credit Limit
-
-            SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Expanded(child: Text('Enter Credit Limit')),
-                Expanded(
-                  child: TextFieldComponent(
-                    hintText: 'Credit Limit',
-                    controller: creditCardLimitController,))
               ],
             ),
 
