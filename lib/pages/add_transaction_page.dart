@@ -4,6 +4,7 @@ import 'package:project_2/components/datepicker_component.dart';
 import 'package:project_2/components/dropdown_field_component.dart';
 import 'package:project_2/components/dropdown_field_map_string_int_component.dart';
 import 'package:project_2/components/text_field_component.dart';
+import 'package:project_2/pages/logged_in_page.dart';
 
 import '../api/api_client.dart';
 
@@ -37,7 +38,7 @@ class _AddTransactionState extends State<AddTransaction> {
         debugPrint("Added Successfully");
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => AddTransaction()),
+          MaterialPageRoute(builder: (context) => LoggedIn()),
         );
       }
       else{
@@ -49,7 +50,7 @@ class _AddTransactionState extends State<AddTransaction> {
   void clearFields() {
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => AddTransaction()),
+      MaterialPageRoute(builder: (context) => LoggedIn()),
     );
   }
 
@@ -117,6 +118,7 @@ class _AddTransactionState extends State<AddTransaction> {
               }
             ),
 
+            //Transaction Amount
             Padding(
               padding: EdgeInsets.fromLTRB(250, 0, 250, 0),
               child: Row(

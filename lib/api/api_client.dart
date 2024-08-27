@@ -165,6 +165,39 @@ class ApiClient{
       return false;
     }
   }
+
+  Future<bool> addNewCreditCard(String first4Digits, String second4Digits, String third4Digits, String last4Digits, String cardName, String cardholderName, int network, String bankName, String expDate, int cvc, double creditLimit, int statementGenDay, int paymentDueIn) async {
+    final url = Uri.parse('$baseUrl/CreditCard');
+    final response = await http.post(
+      url,
+      headers: {
+        'Authorization': 'Bearer $bearerToken',
+        'Content-type': 'application/json',
+      },
+      body: jsonEncode({
+        'first4Digits' : first4Digits,
+        'second4Digits' : second4Digits,
+        'third4Digits' : third4Digits,
+        'last4Digits' : last4Digits,
+        'cardName' : cardName,
+        'cardholderName' : cardholderName,
+        'network' : network,
+        'bankName' : bankName,
+        'expDate' : expDate,
+        'cvc' : cvc,
+        'creditLimit' : creditLimit,
+        'statementGenDay' : statementGenDay,
+        'paymentDueIn' : paymentDueIn,
+      })
+    );
+
+    if(response.statusCode == 200){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
   
 
 }
