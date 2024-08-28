@@ -1,16 +1,10 @@
-# project_2
+# Data collection app for JustAnotherExpenseTracker
 
-A new Flutter project.
+A basic companion app for the [JustAnotherExpenseTracker](https://github.com/leoJ424/JustAnotherExpenseTracker).
 
-## Getting Started
+* Allows the user to add credit card transaction data and add new credit cards.
+## Future
+* Allow Admin privilege users to add categories, recipients, etc.
+* Create a functionality to automatically detect category of transaction on the basis of recipient.
+   
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
